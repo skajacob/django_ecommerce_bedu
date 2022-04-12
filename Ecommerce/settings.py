@@ -4,6 +4,13 @@ Django settings for Ecommerce project.
 """
 
 from pathlib import Path
+import environ
+
+env = environ.Env()
+
+#Leer el archivo .env
+
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -12,12 +19,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-i0ye#$s&rtzof9adxaa3da)4=*lx$@o00@035t9fh$1o5b&6-w'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = ('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 
 
 # Application definition
@@ -113,3 +123,29 @@ STATICFILES_DIRS = [
 # Default primary key field type
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+if DEBUG is False:
+    SESSION_COOKIE_SECURE = True
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_SECONDS = 31536000
+    SECURE_REDIRECT_EXEMPT = []
+    SECURE_SSL_REDIRECT = True
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+    ALLOWED_HOSTS = ['https://ecommerse.com']
+
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+    DATABASES = {
+        'default':{
+            'ENGINE':'django.db.backends.postgresql_psycopg2',
+            'NAME':'',
+            'USER':'',
+            'PASSWORD':'',
+            'HOST':'',
+            'PORT':'',
+        }
+    }
