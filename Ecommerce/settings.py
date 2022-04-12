@@ -2,15 +2,12 @@
 Django settings for Ecommerce project.
 
 """
-
 from pathlib import Path
-import environ
 
-env = environ.Env()
 
-#Leer el archivo .env
 
-environ.Env.read_env()
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -19,10 +16,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = 'django-insecure-i0ye#$s&rtzof9adxaa3da)4=*lx$@o00@035t9fh$1o5b&6-w'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = ('DEBUG')
+DEBUG = True
+
 
 ALLOWED_HOSTS = ['*']
 
@@ -39,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'core',
 ]
 
 MIDDLEWARE = [
