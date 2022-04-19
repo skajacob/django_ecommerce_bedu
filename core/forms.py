@@ -6,6 +6,12 @@ from django import forms
 
 from core.models import User
 
+
+class ContactForm(forms.Form):
+    name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder':"Your Name"})) 
+    email = forms.EmailField(max_length=100, widget=forms.TextInput(attrs={'placeholder':"Your Email"}))
+    message = forms.CharField(max_length=100,  widget=forms.TextInput(attrs={'placeholder':"Your Message"}))
+
 class SignupForm(forms.Form):
     username = forms.CharField(required=True)
     email = forms.EmailField(required=True)

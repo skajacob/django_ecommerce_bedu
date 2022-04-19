@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "crispy_forms",
+    "crispy_tailwind",
     'core',
 ]
 
@@ -148,3 +150,11 @@ if DEBUG is False:
             'PORT':'',
         }
     }
+
+# Authentication
+AUTH_USER_MODEL = 'core.User'
+
+#Crispy forms with tailwind
+CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
+
+CRISPY_TEMPLATE_PACK = "tailwind"
