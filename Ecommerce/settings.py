@@ -1,6 +1,5 @@
 """
 Django settings for Ecommerce project.
-
 """
 from pathlib import Path
 
@@ -158,3 +157,7 @@ AUTH_USER_MODEL = 'core.User'
 CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
 
 CRISPY_TEMPLATE_PACK = "tailwind"
+
+#Setting for email message
+DEFAULT_FROM_EMAIL='mail@datadosis.com'
+NOTIFY_EMAIL='mail@datadosis.com'
