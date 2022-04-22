@@ -3,6 +3,7 @@ from email.policy import default
 from tabnanny import verbose
 from django.db import models
 from django.contrib.auth import get_user_model
+from django.urls import reverse_lazy
 # Create your models here.
 
 User = get_user_model()
@@ -28,14 +29,19 @@ class Address(models.Model):
 class Product(models.Model):
     """Product model for cart app"""
     title = models.CharField(max_length=150)
-    slug = models.SlugField()
+    slug = models.SlugField(unique=True)
     descritption = models.TextField()
+    image = models.ImageField(null = True, upload_to='product_image')
     created = models.DateTimeField(auto_now_add=True)
     update = models.DateTimeField(auto_now=True)
     active = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse_lazy("cart:product", kwargs={'slug': self.slug})
+
 
 class OrderItem(models.Model):
     """Order item models por cart app"""
@@ -50,7 +56,6 @@ class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     start_date = models.DateTimeField(auto_now_add=True)
     orderd_date = models.DateTimeField(auto_now=True)
-
     billing_address = models.ForeignKey(Address, related_name='billing_address', blank=True, null=True, on_delete=models.SET_NULL)
     shipping_address = models.ForeignKey(Address, related_name='shipping_address', blank=True, null=True, on_delete=models.SET_NULL)
     

@@ -1,0 +1,25 @@
+{% extends '_base.html' %}
+
+{% block content %}
+
+<div class="md:container md:mx-auto py-3">
+    <div class="flex flex-row" >
+        <a href="{% url 'core:home' %}">Home</a>
+        <span class="px-2" >/</span>
+        <strong class="" >Product List</strong>
+    </div>
+</div>
+
+<div class="md:container md:mx-auto">
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-5" >
+        {% for item in object_list %} 
+                <div class="grid justify-items-center grid-flow-row auto-rows-max border-2 border-gray-300 rounded-xl p-6 bg-gray-100  w-auto md:w-full" data-aos='fade-up'>
+                    <img src="{{ product.image.url }}" class="object-cover h-auto w-auto  md:h-48 md:w-48 ">
+                    <h2 class="text-center pb -8" >Pc gamer</h2>
+                    <p class="text-center" >Este es un test del producto 1</p>
+                </div>
+        {% endfor  %}        
+    </div>
+</div>
+
+{% endblock content %}
