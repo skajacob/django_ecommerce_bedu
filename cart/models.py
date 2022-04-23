@@ -9,6 +9,7 @@ from django.urls import reverse_lazy
 User = get_user_model()
 
 class Address(models.Model):
+    """Address models por cart app"""
     ADDRESS_CHOICES=(
         ('B','Billing'),
         ('S','Shipping'),
@@ -53,6 +54,7 @@ class OrderItem(models.Model):
         return f"{self.quantity} x {self.product.title}"
 
 class Order(models.Model):
+    """Order models por cart app"""
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     start_date = models.DateTimeField(auto_now_add=True)
     orderd_date = models.DateTimeField(auto_now=True)
@@ -68,6 +70,7 @@ class Order(models.Model):
         return f"ORDER- {self.pk}"
 
 class Payment(models.Model):
+    """Payment models por cart app"""
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     payment_method = models.CharField(max_length=20, choices=(
         ('Paypal','Paypal'),
