@@ -40,6 +40,9 @@ class ContactView(generic.FormView):
         return super(ContactView, self).form_invalid(form)
     
 
+class StoresView(generic.TemplateView):
+    template_name = 'core/stores.html'
+
 class SignupView(generic.FormView):
     template_name = "users/signup.html"
     form_class = SignupForm
