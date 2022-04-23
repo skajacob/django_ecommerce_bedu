@@ -11,5 +11,5 @@ class ProductListView(generic.ListView):
 
 class ProductDetailView(generic.DetailView):
     model = Product
-    template_name='product_detail.html'
+    template_name='cart/product_detail.html'
     #queryset = Product.objects.all()
