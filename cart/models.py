@@ -31,8 +31,8 @@ class Product(models.Model):
     """Product model for cart app"""
     title = models.CharField(max_length=150)
     slug = models.SlugField(unique=True)
-    descritption = models.TextField()
-    image = models.ImageField(null = True, upload_to='product_image')
+    description = models.TextField()
+    image = models.ImageField(null = True, upload_to='static/img/product_image')
     created = models.DateTimeField(auto_now_add=True)
     update = models.DateTimeField(auto_now=True)
     active = models.BooleanField(default=False)

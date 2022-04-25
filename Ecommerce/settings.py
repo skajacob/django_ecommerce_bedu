@@ -11,6 +11,9 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+MEDIA_URL = ''
+MEDIA_ROOT = ''
+
 
 
 
@@ -158,7 +161,3 @@ AUTH_USER_MODEL = 'core.User'
 CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
 
 CRISPY_TEMPLATE_PACK = "tailwind"
-
-#Setting for email message
-DEFAULT_FROM_EMAIL='mail@datadosis.com'
-NOTIFY_EMAIL='mail@datadosis.com'
