@@ -20,6 +20,16 @@ spec:
           volumeMounts:
             - name: django-storage
               mountPath: /app
+      iinitContainers:
+        - name: init-migrate
+          image: django_ecommerce-api/ecommerce:latest
+          command: ["/bin/sh", "-c"]
+          args:
+            - python manage.py makemigrations &&
+              python manage.py migrate
+          volumeMounts:
+            - name: django-storage
+              mountPath: /app
       volumes:
         - name: django-storage
           emptyDir: {}

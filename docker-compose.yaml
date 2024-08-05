@@ -1,0 +1,27 @@
+services:
+  db:
+    image: postgres:15.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_DB=e-commerce-db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1234
+      - PGDATA=/data/postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - e-commerce-db:/data/postgres
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '8000:8000'
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+
+volumes:
+    e-commerce-db:
+      name: e-commerce-db
